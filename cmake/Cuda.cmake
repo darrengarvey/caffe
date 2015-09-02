@@ -141,6 +141,9 @@ macro(caffe_cuda_compile objlist_variable)
 
     # we remove /EHa as it generates warnings under windows
     string(REPLACE "/EHa" "" ${var} "${${var}}")
+    # CUDA compiler doesn't support C++0x even if your host compiler does.
+    string(REPLACE "-std=c++11" "" ${var} "${${var}}")
+    string(REPLACE "-std=c++0x" "" ${var} "${${var}}")
 
   endforeach()
 
