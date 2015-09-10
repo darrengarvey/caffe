@@ -26,6 +26,7 @@ void SigmoidCrossEntropyLossLayer<Dtype>::Reshape(
   CHECK_EQ(bottom[0]->count(), bottom[1]->count()) <<
       "SIGMOID_CROSS_ENTROPY_LOSS layer inputs must have the same count.";
   sigmoid_layer_->Reshape(sigmoid_bottom_vec_, sigmoid_top_vec_);
+  loss_data_.ReshapeLike(*bottom[0]);
 }
 
 template <typename Dtype>

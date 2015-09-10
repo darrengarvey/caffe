@@ -655,6 +655,8 @@ class SigmoidCrossEntropyLossLayer : public LossLayer<Dtype> {
   vector<Blob<Dtype>*> sigmoid_bottom_vec_;
   /// top vector holder to call the underlying SigmoidLayer::Forward
   vector<Blob<Dtype>*> sigmoid_top_vec_;
+  /// Data for GPU forward pass
+  Blob<Dtype> loss_data_;
 };
 
 // Forward declare SoftmaxLayer for use in SoftmaxWithLossLayer.
